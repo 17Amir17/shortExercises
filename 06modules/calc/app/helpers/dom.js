@@ -57,7 +57,6 @@ const calculate = () => {
   if (callback) {
     try {
       const numbers = getNumbers();
-      console.log(numbers);
       const result = myMath.equals(numbers[0], numbers[1], callback);
       setScreenValue(result);
       return;
