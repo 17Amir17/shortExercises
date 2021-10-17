@@ -1,3 +1,6 @@
+import { handleButtonClicked } from "./dom";
+
 export function onFormClick(event) {
-  console.log(event.target.value);
+  const value = event.target.value;
+  if (value) handleButtonClicked(value);
 }

@@ -10,13 +10,33 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./app/helpers/dom.js":
+/*!****************************!*\
+  !*** ./app/helpers/dom.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"handleButtonClicked\": () => (/* binding */ handleButtonClicked)\n/* harmony export */ });\n/* harmony import */ var _math_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math.js */ \"./app/helpers/math.js\");\n\r\n\r\nconst screen = document.querySelector(\".result\");\r\n\r\nconst mathCallbacks = {\r\n  \"+\": _math_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].add,\r\n  \"-\": _math_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].sub,\r\n  \"/\": _math_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].divide,\r\n  X: _math_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].multiply,\r\n};\r\nlet mathFunction;\r\n\r\nfunction handleButtonClicked(btnVal) {\r\n  switch (btnVal) {\r\n    case \"Del\":\r\n      deleteLastChar();\r\n      break;\r\n    case \"=\":\r\n      calculate();\r\n      break;\r\n    case \"X\":\r\n    case \"+\":\r\n    case \"/\":\r\n    case \"-\":\r\n      //   if (mathFunction) calculate();\r\n      mathFunction = btnVal;\r\n      addValue(` ${btnVal} `);\r\n      break;\r\n    default:\r\n      addValue(btnVal);\r\n      break;\r\n  }\r\n}\r\n\r\nconst deleteLastChar = () => {\r\n  if (screen.value != \"\") screen.value = screen.value.slice(0, -1);\r\n};\r\n\r\nconst addValue = (val) => {\r\n  screen.value += val;\r\n};\r\n\r\nconst setScreenValue = (value) => {\r\n  screen.value = value;\r\n  mathFunction = undefined;\r\n};\r\n\r\nconst getNumbers = () => {\r\n  const numbers = screen.value.split(` ${mathFunction} `);\r\n  numbers[0] = Number(numbers[0].replace(/\\s/g, \"\"));\r\n  numbers[1] = Number(numbers[1].replace(/\\s/g, \"\"));\r\n  return numbers;\r\n};\r\n\r\nconst calculate = () => {\r\n  const callback = mathCallbacks[mathFunction];\r\n  if (callback) {\r\n    try {\r\n      const numbers = getNumbers();\r\n      console.log(numbers);\r\n      const result = _math_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].equals(numbers[0], numbers[1], callback);\r\n      setScreenValue(result);\r\n      return;\r\n    } catch (error) {\r\n      setScreenValue(\"Error\");\r\n    }\r\n  }\r\n  setScreenValue(\"Error\");\r\n};\r\n\n\n//# sourceURL=webpack://calc/./app/helpers/dom.js?");
+
+/***/ }),
+
 /***/ "./app/helpers/listeners.js":
 /*!**********************************!*\
   !*** ./app/helpers/listeners.js ***!
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"onFormClick\": () => (/* binding */ onFormClick)\n/* harmony export */ });\nfunction onFormClick(event) {\r\n  console.log(event.target.value);\r\n}\r\n\n\n//# sourceURL=webpack://calc/./app/helpers/listeners.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"onFormClick\": () => (/* binding */ onFormClick)\n/* harmony export */ });\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ \"./app/helpers/dom.js\");\n\r\n\r\nfunction onFormClick(event) {\r\n  const value = event.target.value;\r\n  if (value) (0,_dom__WEBPACK_IMPORTED_MODULE_0__.handleButtonClicked)(value);\r\n}\r\n\n\n//# sourceURL=webpack://calc/./app/helpers/listeners.js?");
+
+/***/ }),
+
+/***/ "./app/helpers/math.js":
+/*!*****************************!*\
+  !*** ./app/helpers/math.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst add = (n1, n2) => {\r\n  return n1 + n2;\r\n};\r\nconst sub = (n1, n2) => {\r\n  return n1 - n2;\r\n};\r\nconst multiply = (n1, n2) => {\r\n  return n1 * n2;\r\n};\r\nconst divide = (n1, n2) => {\r\n  return n1 / n2;\r\n};\r\nconst equals = (n1, n2, callback) => {\r\n  return callback(n1, n2);\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\r\n  add,\r\n  sub,\r\n  multiply,\r\n  divide,\r\n  equals,\r\n});\r\n\n\n//# sourceURL=webpack://calc/./app/helpers/math.js?");
 
 /***/ }),
 
