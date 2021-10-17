@@ -1,5 +1,9 @@
 {
   "parser": "babel-eslint",
   "extends": ["airbnb"],
-  "rules": {}
+  "rules": {
+    "linebreak-style": ["error", "windows"],  // changes the file to CRLF
+    "import/prefer-default-export": "off"
+  },
+  "browser": true
 }

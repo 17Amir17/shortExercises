@@ -1,39 +1,17 @@
-import myMath from "./math.js";
+import myMath from './math.js';
 
-const screen = document.querySelector(".result");
+const screen = document.querySelector('.result');
 
 const mathCallbacks = {
-  "+": myMath.add,
-  "-": myMath.sub,
-  "/": myMath.divide,
+  '+': myMath.add,
+  '-': myMath.sub,
+  '/': myMath.divide,
   X: myMath.multiply,
 };
 let mathFunction;
 
-export function handleButtonClicked(btnVal) {
-  switch (btnVal) {
-    case "Del":
-      deleteLastChar();
-      break;
-    case "=":
-      calculate();
-      break;
-    case "X":
-    case "+":
-    case "/":
-    case "-":
-      //   if (mathFunction) calculate();
-      mathFunction = btnVal;
-      addValue(` ${btnVal} `);
-      break;
-    default:
-      addValue(btnVal);
-      break;
-  }
-}
-
 const deleteLastChar = () => {
-  if (screen.value != "") screen.value = screen.value.slice(0, -1);
+  if (screen.value !== '') screen.value = screen.value.slice(0, -1);
 };
 
 const addValue = (val) => {
@@ -47,8 +25,8 @@ const setScreenValue = (value) => {
 
 const getNumbers = () => {
   const numbers = screen.value.split(` ${mathFunction} `);
-  numbers[0] = Number(numbers[0].replace(/\s/g, ""));
-  numbers[1] = Number(numbers[1].replace(/\s/g, ""));
+  numbers[0] = Number(numbers[0].replace(/\s/g, ''));
+  numbers[1] = Number(numbers[1].replace(/\s/g, ''));
   return numbers;
 };
 
@@ -61,8 +39,29 @@ const calculate = () => {
       setScreenValue(result);
       return;
     } catch (error) {
-      setScreenValue("Error");
+      setScreenValue('Error');
     }
   }
-  setScreenValue("Error");
+  setScreenValue('Error');
 };
+
+export function handleButtonClicked(btnVal) {
+  switch (btnVal) {
+    case 'Del':
+      deleteLastChar();
+      break;
+    case '=':
+      calculate();
+      break;
+    case 'X':
+    case '/':
+    case '-':
+      //   if (mathFunction) calculate();
+      mathFunction = btnVal;
+      addValue(` ${btnVal} `);
+      break;
+    default:
+      addValue(btnVal);
+      break;
+  }
+}
