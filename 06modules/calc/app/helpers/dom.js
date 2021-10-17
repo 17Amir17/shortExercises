@@ -12,7 +12,10 @@ const mathCallbacks = {
 let mathFunction;
 
 const deleteLastChar = () => {
-  if (screen.value !== '') screen.value = screen.value.slice(0, -1);
+  if (screen.value !== '') {
+    if (screen.value[screen.value.length - 1]) mathFunction = undefined;
+    screen.value = screen.value.slice(0, -1);
+  } else mathFunction = undefined;
 };
 
 const addValue = (val) => {
