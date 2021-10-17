@@ -10,13 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./app/helpers/listeners.js":
+/*!**********************************!*\
+  !*** ./app/helpers/listeners.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"onFormClick\": () => (/* binding */ onFormClick)\n/* harmony export */ });\nfunction onFormClick(event) {\r\n  console.log(event.target.value);\r\n}\r\n\n\n//# sourceURL=webpack://calc/./app/helpers/listeners.js?");
+
+/***/ }),
+
 /***/ "./app/main.js":
 /*!*********************!*\
   !*** ./app/main.js ***!
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./app/styles.css\");\n\n\n\n//# sourceURL=webpack://calc/./app/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./app/styles.css\");\n/* harmony import */ var _helpers_listeners__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers/listeners */ \"./app/helpers/listeners.js\");\n\n\n\nconst calculaterElement = document.querySelector(\".container\");\ncalculaterElement.addEventListener(\"click\", _helpers_listeners__WEBPACK_IMPORTED_MODULE_1__.onFormClick);\n\n\n//# sourceURL=webpack://calc/./app/main.js?");
 
 /***/ }),
 
