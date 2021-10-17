@@ -6,6 +6,7 @@ const mathCallbacks = {
   '+': myMath.add,
   '-': myMath.sub,
   '/': myMath.divide,
+  '%': myMath.module,
   X: myMath.multiply,
 };
 let mathFunction;
@@ -24,10 +25,14 @@ const setScreenValue = (value) => {
 };
 
 const getNumbers = () => {
-  const numbers = screen.value.split(` ${mathFunction} `);
-  numbers[0] = Number(numbers[0].replace(/\s/g, ''));
-  numbers[1] = Number(numbers[1].replace(/\s/g, ''));
-  return numbers;
+  try {
+    const numbers = screen.value.split(` ${mathFunction} `);
+    numbers[0] = Number(numbers[0].replace(/\s/g, ''));
+    numbers[1] = Number(numbers[1].replace(/\s/g, ''));
+    return numbers;
+  } catch (error) {
+    return false;
+  }
 };
 
 const calculate = () => {
@@ -35,6 +40,7 @@ const calculate = () => {
   if (callback) {
     try {
       const numbers = getNumbers();
+      console.log(numbers);
       const result = myMath.equals(numbers[0], numbers[1], callback);
       setScreenValue(result);
       return;
@@ -55,10 +61,20 @@ export function handleButtonClicked(btnVal) {
       break;
     case 'X':
     case '/':
-    case '-':
-      //   if (mathFunction) calculate();
+    case '+':
+    case '%':
+      if (mathFunction) calculate();
       mathFunction = btnVal;
       addValue(` ${btnVal} `);
+      break;
+    case '-':
+      if (mathFunction && getNumbers()[1]) calculate();
+      if (mathFunction || (!mathFunction && screen.value === '')) {
+        addValue(btnVal);
+      } else {
+        addValue(` ${btnVal} `);
+        mathFunction = btnVal;
+      }
       break;
     default:
       addValue(btnVal);
