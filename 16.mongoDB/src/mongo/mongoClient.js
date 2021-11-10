@@ -6,7 +6,6 @@ const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.
 
 async function init() {
   return new Promise((resolve, reject) => {
-    console.log('Connecting to ' + uri);
     mongoose
       .connect(uri, {
         useNewUrlParser: true,
@@ -40,4 +39,11 @@ async function clear() {
 async function close() {
   await mongoose.connection.close();
 }
-module.exports = { init, addAgent, insertMany, clear, close };
+
+async function getAllCities() {
+  const cities = await Agent.find({}).distinct('city');
+  return cities.map((city) => {
+    return city.trim();
+  });
+}
+module.exports = { init, addAgent, insertMany, clear, close, getAllCities };

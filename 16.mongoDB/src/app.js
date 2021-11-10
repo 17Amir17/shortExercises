@@ -7,9 +7,17 @@ const port = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 app.use(express.json());
-//Init mongo
-mongo.init();
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+app.get('/cities', async (req, res) => {
+  res.json(await mongo.getAllCities());
 });
+
+const waitForMongo = async () => {
+  //Init mongo
+  await mongo.init();
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+  });
+};
+
+waitForMongo();
