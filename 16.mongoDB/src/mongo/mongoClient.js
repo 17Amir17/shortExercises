@@ -57,6 +57,11 @@ async function getAgentsInCity(city) {
   });
 }
 
+async function editAgentCityByID(id, city) {
+  const res = await Agent.findOneAndUpdate({ id }, { city });
+  console.log(res);
+  return res;
+}
 module.exports = {
   init,
   addAgent,
@@ -65,4 +70,5 @@ module.exports = {
   close,
   getAllCities,
   getAgentsInCity,
+  editAgentCityByID,
 };
