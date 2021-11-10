@@ -46,4 +46,23 @@ async function getAllCities() {
     return city.trim();
   });
 }
-module.exports = { init, addAgent, insertMany, clear, close, getAllCities };
+
+async function getAgentsInCity(city) {
+  const agents = await Agent.find({ city });
+  return agents.map((agent) => {
+    return {
+      name: agent.name,
+      id: agent.id,
+    };
+  });
+}
+
+module.exports = {
+  init,
+  addAgent,
+  insertMany,
+  clear,
+  close,
+  getAllCities,
+  getAgentsInCity,
+};

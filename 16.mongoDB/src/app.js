@@ -12,7 +12,13 @@ app.get('/cities', async (req, res) => {
   res.json(await mongo.getAllCities());
 });
 
-const waitForMongo = async () => {
+app.get('/agents/', async (req, res) => {
+  const city = req.query.city;
+  if (!city) return res.status(400).json({ error: 'Bad input' });
+  res.json(await mongo.getAgentsInCity(city));
+});
+
+const waitForMongoAndListen = async () => {
   //Init mongo
   await mongo.init();
   app.listen(port, () => {
@@ -20,4 +26,4 @@ const waitForMongo = async () => {
   });
 };
 
-waitForMongo();
+waitForMongoAndListen();
