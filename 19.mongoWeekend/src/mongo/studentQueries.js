@@ -51,6 +51,14 @@ async function findAllStudentsSurnameContains(let1, let2) {
     ],
   });
 }
+
+// Delete Documents
+async function deleteAllStudentsWithName(name) {
+  return await Student.deleteMany({ name });
+}
+async function deleteAllStudentsWithDate(date) {
+  return await Student.deleteMany({ date });
+}
 module.exports = {
   getAllStudents,
   getAllStudentsWithName,
@@ -62,4 +70,6 @@ module.exports = {
   updateBirthByName,
   findAllStudentsThatContainLetter,
   findAllStudentsSurnameContains,
+  deleteAllStudentsWithName,
+  deleteAllStudentsWithDate,
 };
