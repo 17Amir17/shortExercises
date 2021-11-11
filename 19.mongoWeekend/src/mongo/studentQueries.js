@@ -26,6 +26,15 @@ async function getAllStudentsNumberStartsWith(number) {
   return await Student.find({ phone: { $regex: new RegExp(`^${number}`) } });
 }
 
+async function addStudentsCourseByName(name, course) {
+  // $addToSet only appends if value does not exists
+  return await Student.updateMany({ name }, { $addToSet: { courses: course } });
+}
+
+async function updateBirthByName(name, birth) {
+  return await Student.updateMany({ name }, { birth });
+}
+
 module.exports = {
   getAllStudents,
   getAllStudentsWithName,
@@ -33,4 +42,6 @@ module.exports = {
   getAllStudentsWithCourseAndGender,
   getAllStudentsBirthGreaterThan,
   getAllStudentsNumberStartsWith,
+  addStudentsCourseByName,
+  updateBirthByName,
 };

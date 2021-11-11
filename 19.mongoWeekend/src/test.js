@@ -18,6 +18,9 @@ mongoClient.init().then(
     console.log('After 05/05/1998\n', young);
     const phone054 = await studentQueries.getAllStudentsNumberStartsWith('054');
     console.log('054 Gang\n', phone054);
+    await studentQueries.addStudentsCourseByName('Yahalom', 'Javascript');
+    await studentQueries.updateBirthByName('Koren', new Date('02/12/1998'));
+    console.log(await studentQueries.getAllStudentsWithName('Koren'));
     mongoClient.close();
   },
   (err) => mongoClient.close()
