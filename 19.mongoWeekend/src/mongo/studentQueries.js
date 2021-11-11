@@ -12,8 +12,14 @@ async function getAllStudentsWithCourse(course) {
   return await Student.find({ courses: { $in: [course] } });
 }
 
+async function getAllStudentsWithCourseAndGender(course, gender) {
+  return await Student.find({
+    $and: [{ courses: { $in: [course] } }, { gender }],
+  });
+}
 module.exports = {
   getAllStudents,
   getAllStudentsWithName,
   getAllStudentsWithCourse,
+  getAllStudentsWithCourseAndGender,
 };
