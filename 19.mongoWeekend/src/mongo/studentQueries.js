@@ -17,9 +17,20 @@ async function getAllStudentsWithCourseAndGender(course, gender) {
     $and: [{ courses: { $in: [course] } }, { gender }],
   });
 }
+
+async function getAllStudentsBirthGreaterThan(birth) {
+  return await Student.find({ birth: { $gt: birth } });
+}
+
+async function getAllStudentsNumberStartsWith(number) {
+  return await Student.find({ phone: { $regex: new RegExp(`^${number}`) } });
+}
+
 module.exports = {
   getAllStudents,
   getAllStudentsWithName,
   getAllStudentsWithCourse,
   getAllStudentsWithCourseAndGender,
+  getAllStudentsBirthGreaterThan,
+  getAllStudentsNumberStartsWith,
 };
