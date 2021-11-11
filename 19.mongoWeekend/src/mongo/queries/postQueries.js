@@ -1,4 +1,4 @@
-const Post = require('./models/post');
+const Post = require('../models/post');
 
 async function insertMany(col) {
   return await Post.insertMany(col);

@@ -1,10 +1,10 @@
 const mongo = require('../mongo/mongoClient');
 const fs = require('fs').promises;
 const path = require('path');
-const studentQueries = require('../mongo/studentQueries');
-const userQueries = require('../mongo/userQueries');
-const postQueries = require('../mongo/postQueries');
-const commentQueries = require('../mongo/commentQueries');
+const studentQueries = require('../mongo/queries/studentQueries');
+const userQueries = require('../mongo/queries/userQueries');
+const postQueries = require('../mongo/queries/postQueries');
+const commentQueries = require('../mongo/queries/commentQueries');
 //Get data
 const studentJSONData = getStudentJSONData();
 const postJSONData = getJSONData('./postData.json');

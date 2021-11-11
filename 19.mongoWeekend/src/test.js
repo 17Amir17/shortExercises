@@ -1,5 +1,5 @@
 const mongoClient = require('./mongo/mongoClient');
-const studentQueries = require('./mongo/studentQueries');
+const studentQueries = require('./mongo/queries/studentQueries');
 
 mongoClient.init().then(
   async () => {
