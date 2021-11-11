@@ -3,6 +3,7 @@ const studentQueries = require('./mongo/studentQueries');
 
 mongoClient.init().then(
   async () => {
+    // Query Find
     const all = await studentQueries.getAllStudents();
     console.log(all.length);
     const ido = await studentQueries.getAllStudentsWithName('Ido');
@@ -18,9 +19,17 @@ mongoClient.init().then(
     console.log('After 05/05/1998\n', young);
     const phone054 = await studentQueries.getAllStudentsNumberStartsWith('054');
     console.log('054 Gang\n', phone054);
+    // Update Documents
     await studentQueries.addStudentsCourseByName('Yahalom', 'Javascript');
     await studentQueries.updateBirthByName('Koren', new Date('02/12/1998'));
-    console.log(await studentQueries.getAllStudentsWithName('Koren'));
+    // Text Search
+    const haveO = await studentQueries.findAllStudentsThatContainLetter('o');
+    console.log('Have o gang\n', haveO);
+    const haveHorY = await studentQueries.findAllStudentsSurnameContains(
+      'h',
+      'y'
+    );
+    console.log('HaveHorY gang\n', haveHorY);
     mongoClient.close();
   },
   (err) => mongoClient.close()

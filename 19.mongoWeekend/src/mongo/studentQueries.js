@@ -1,5 +1,6 @@
 const Student = require('./models/student');
 
+// Query / Find Documents
 async function getAllStudents() {
   return await Student.find({});
 }
@@ -26,6 +27,8 @@ async function getAllStudentsNumberStartsWith(number) {
   return await Student.find({ phone: { $regex: new RegExp(`^${number}`) } });
 }
 
+// Update Documents
+
 async function addStudentsCourseByName(name, course) {
   // $addToSet only appends if value does not exists
   return await Student.updateMany({ name }, { $addToSet: { courses: course } });
@@ -35,6 +38,19 @@ async function updateBirthByName(name, birth) {
   return await Student.updateMany({ name }, { birth });
 }
 
+// Text Search
+async function findAllStudentsThatContainLetter(letter) {
+  return await Student.find({ name: { $regex: new RegExp(letter) } });
+}
+
+async function findAllStudentsSurnameContains(let1, let2) {
+  return await Student.find({
+    $or: [
+      { surName: { $regex: new RegExp(let1) } },
+      { surName: { $regex: new RegExp(let2) } },
+    ],
+  });
+}
 module.exports = {
   getAllStudents,
   getAllStudentsWithName,
@@ -44,4 +60,6 @@ module.exports = {
   getAllStudentsNumberStartsWith,
   addStudentsCourseByName,
   updateBirthByName,
+  findAllStudentsThatContainLetter,
+  findAllStudentsSurnameContains,
 };
