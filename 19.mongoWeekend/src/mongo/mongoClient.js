@@ -1,7 +1,9 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const Student = require('./models/student');
-
+const Post = require('./models/post');
+const User = require('./models/user');
+const Comment = require('./models/comment');
 const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.usl1e.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`;
 
 async function init() {
@@ -22,18 +24,13 @@ async function init() {
   });
 }
 
-async function addStudent(name, surName, birth, phone, gender, courses) {
-  const student = new Student({ name, surName, birth, phone, gender, courses });
-  const res = await student.save();
-  return res;
-}
-
-async function insertMany(col) {
-  return await Student.insertMany(col);
-}
-
 async function clear() {
-  return await Student.deleteMany({});
+  return [
+    await Student.deleteMany({}),
+    await Post.deleteMany({}),
+    await User.deleteMany({}),
+    await Comment.deleteMany({}),
+  ];
 }
 
 async function close() {
@@ -42,8 +39,6 @@ async function close() {
 
 module.exports = {
   init,
-  addStudent,
-  insertMany,
   clear,
   close,
 };

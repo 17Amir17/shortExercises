@@ -1,0 +1,29 @@
+[
+  {
+    "username": "GoodGuyGreg",
+    "comment": "Hope you got a good deal!",
+    "post": "Borrows something"
+  },
+
+  {
+    "username": "GoodGuyGreg",
+    "comment": "What's mine is yours!",
+    "post": "Borrows everything"
+  },
+  {
+    "username": "GoodGuyGreg",
+    "comment": "Don't violate the licensing agreement!",
+    "post": "Forks your repo on github"
+  },
+
+  {
+    "username": "ScumbagSteve",
+    "comment": " It still isn't clean",
+    "post": "Passes out at party"
+  },
+  {
+    "username": "ScumbagSteve",
+    "comment": "Denied your PR cause I found a hack",
+    "post": "Reports a bug in your code"
+  }
+]

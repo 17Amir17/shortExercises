@@ -1,5 +1,15 @@
 const Student = require('./models/student');
 
+async function addStudent(name, surName, birth, phone, gender, courses) {
+  const student = new Student({ name, surName, birth, phone, gender, courses });
+  const res = await student.save();
+  return res;
+}
+
+async function insertMany(col) {
+  return await Student.insertMany(col);
+}
+
 // Query / Find Documents
 async function getAllStudents() {
   return await Student.find({});
@@ -60,6 +70,8 @@ async function deleteAllStudentsWithDate(date) {
   return await Student.deleteMany({ date });
 }
 module.exports = {
+  insertMany,
+  addStudent,
   getAllStudents,
   getAllStudentsWithName,
   getAllStudentsWithCourse,
