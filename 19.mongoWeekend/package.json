@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node ./src/test.js",
+    "teststudents": "node ./src/testStudents.js",
+    "testrelated": "node ./src/testRelated.js",
     "filldb": "node ./src/jobs/populateDB.js"
   },
   "keywords": [],

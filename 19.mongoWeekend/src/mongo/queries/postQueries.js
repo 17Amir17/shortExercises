@@ -8,4 +8,17 @@ async function getPostIdByTitle(title) {
   return (await Post.findOne({ title: { $regex: new RegExp(title) } }))._id;
 }
 
-module.exports = { insertMany, getPostIdByTitle };
+async function getAllPosts() {
+  return await Post.find({});
+}
+
+async function getAllPostsByAuthor(username) {
+  return await Post.find({ username });
+}
+
+module.exports = {
+  insertMany,
+  getPostIdByTitle,
+  getAllPosts,
+  getAllPostsByAuthor,
+};

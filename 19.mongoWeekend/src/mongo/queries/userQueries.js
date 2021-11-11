@@ -4,4 +4,8 @@ async function insertMany(col) {
   return await User.insertMany(col);
 }
 
-module.exports = { insertMany };
+async function getAllUsers() {
+  return await User.find({});
+}
+
+module.exports = { insertMany, getAllUsers };
