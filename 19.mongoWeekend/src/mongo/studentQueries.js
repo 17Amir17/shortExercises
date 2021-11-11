@@ -67,7 +67,7 @@ async function deleteAllStudentsWithName(name) {
   return await Student.deleteMany({ name });
 }
 async function deleteAllStudentsWithDate(date) {
-  return await Student.deleteMany({ date });
+  return await Student.deleteMany({ birth: date });
 }
 module.exports = {
   insertMany,

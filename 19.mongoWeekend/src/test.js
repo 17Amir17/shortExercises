@@ -33,7 +33,7 @@ mongoClient.init().then(
     // Delete Document
     await studentQueries.deleteAllStudentsWithName('Ido');
     console.log(await studentQueries.getAllStudentsWithName('Ido'));
-    await studentQueries.deleteAllStudentsWithDate(new Date('02/04/1998'));
+    await studentQueries.deleteAllStudentsWithDate(new Date('04/02/1998'));
     console.log(await studentQueries.getAllStudentsWithName('Oryan'));
     mongoClient.close();
   },
