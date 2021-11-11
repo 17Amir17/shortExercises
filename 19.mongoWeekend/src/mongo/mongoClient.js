@@ -29,7 +29,6 @@ async function addStudent(name, surName, birth, phone, gender, courses) {
 }
 
 async function insertMany(col) {
-  console.log(col);
   return await Student.insertMany(col);
 }
 
