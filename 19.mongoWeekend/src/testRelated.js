@@ -21,7 +21,7 @@ const start = async () => {
     const comments = await commentQueries.getAllComments();
     console.log(comments);
     // find all comments that was authored by "GoodGuyGreg"
-    const gergsComments = await commentQueries.getCommentsByAuthor(
+    const gregsComments = await commentQueries.getCommentsByAuthor(
       'GoodGuyGreg'
     );
     console.log(gregsComments);
@@ -56,8 +56,9 @@ mongo.init().then(async () => {
     const comments = await commentQueries.getCommentsFromPost(post._id);
     if (comments.length === 0) console.log('No comments.\n');
     for (const comment of comments) {
-      console.log(`${comment.username}: ${comment.comment}\n`);
+      console.log(`${comment.username}: ${comment.comment}`);
     }
+    console.log();
   }
   mongo.close();
 });
