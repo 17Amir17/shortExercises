@@ -10,7 +10,7 @@ export default class HotelsGallery extends React.Component {
       <ul className="gallery">
         {Hotels.map((hotel) => {
           return (
-            <Link to={`/${Kebab(hotel['מלון מרום'])}`}>
+            <Link to={`/${Kebab(hotel['מלון מרום'])}`} key={hotel['מלון מרום']}>
               <HotelCard img={hotel.image} name={hotel['מלון מרום']} />
             </Link>
           );

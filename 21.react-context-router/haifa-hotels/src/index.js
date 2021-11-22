@@ -10,7 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HotelsGallery key="gallery" />} />
+        <Route path="/" element={<HotelsGallery key={HotelsGallery} />} />
         {Hotels.map((hotel) => {
           return (
             <Route
@@ -21,6 +21,7 @@ ReactDOM.render(
                   number={hotel[8254355]}
                 />
               }
+              key={hotel}
             />
           );
         })}
