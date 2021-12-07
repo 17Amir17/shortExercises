@@ -8,7 +8,7 @@ interface ExerciseData {
   textRaiting: string;
 }
 
-function calculateExercises(
+export function calculateExercises(
   exHours: number[],
   originalTargetValue: number
 ): ExerciseData {
@@ -38,7 +38,7 @@ function calculateExercises(
   };
 }
 
-interface ExerciseValues {
+export interface ExerciseValues {
   exHours: number[];
   originalTargetValue: number;
 }
