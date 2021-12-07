@@ -22,4 +22,40 @@ function calculateExercises(exHours: number[], originalTargetValue: number) : Ex
     return {numOfDays, numOfTrainingDays, originalTargetValue, avgTime, isReached, raiting, textRaiting}
 }
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2))
+interface ExerciseValues{
+    exHours: number[]
+    originalTargetValue: number;
+}
+
+function getNumber(str: string): number{
+    const num = Number(str);
+    if(isNaN(num)) throw "Not a number!!";
+    return num;
+}
+
+const parseArgs = (args: Array<string>): ExerciseValues => {
+    if (args.length < 4) throw new Error('Not enough arguments');
+    try {
+      const exHours: number[] = [];
+      for(let i = 2; i < args.length - 1; i++){
+        exHours.push(getNumber(args[i]));
+      }
+      const originalTargetValue = getNumber(args[args.length-1])
+      return {
+          exHours, originalTargetValue
+      }
+    } catch(error) {
+      throw new Error('Provided values were not numbers!');
+    }
+  }
+
+try {
+    const { exHours, originalTargetValue } = parseArgs(process.argv);
+    console.log(calculateExercises(exHours, originalTargetValue));
+} catch (error: unknown) {
+    let errorMessage = 'Something bad happened.'
+    if (error instanceof Error) {
+      errorMessage += ' Error: ' + error.message;
+    }
+    console.log(errorMessage);
+  }
