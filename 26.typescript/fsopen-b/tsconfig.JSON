@@ -1,0 +1,6 @@
+{
+  "allowJs": false,
+  "compilerOptions": {
+    "noImplicitAny": true
+  }
+}
