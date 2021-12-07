@@ -27,7 +27,7 @@ interface ExerciseValues{
     originalTargetValue: number;
 }
 
-function getNumber(str: string): number{
+export function getNumber(str: unknown): number{
     const num = Number(str);
     if(isNaN(num)) throw "Not a number!!";
     return num;

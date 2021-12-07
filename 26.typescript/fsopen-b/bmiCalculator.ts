@@ -1,4 +1,4 @@
-function calculateBmi(height: number, weight: number) : string {
+export function calculateBmi(height: number, weight: number) : string {
     const bmi = weight / ((height / 100)**2);
     if(bmi < 18.5){
         return `Underweight (${bmi})`
@@ -13,6 +13,7 @@ interface BmiValues{
     height: number;
     weight: number;
 }
+
 const parseArguments = (args: Array<string>): BmiValues => {
     if (args.length < 4) throw new Error('Not enough arguments');
     if (args.length > 4) throw new Error('Too many arguments');
